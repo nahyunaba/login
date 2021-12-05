@@ -1,8 +1,8 @@
 "use strict";
 
-const id = documnet.querySelector("#id"),
-  psword = documnet.querySelector("#psword"),
-  loginBtn = documnet.querySelector("button");
+const id = document.querySelector(".id");
+const psword = document.querySelector("#psword");
+const loginBtn = document.querySelector("button");
 
 loginBtn.addEventListener("click", login);
 
@@ -18,5 +18,16 @@ function login() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(req),
-  });
+  })
+    .then(res => res.json())
+    .then(res => {
+      if (res.success) {
+        location.href = "/";
+      } else {
+        alert(res.msg);
+      }
+    })
+    .catch(err => {
+      console.error(new Error("로그인중 에러 발생 "));
+    });
 }
