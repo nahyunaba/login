@@ -33,7 +33,7 @@ class UserStorage {
     const users = this.#users;
     users.id.push(userInfo.id);
     users.name.push(userInfo.name);
-    consol.log(users);
+    return {sucess: true};
   }
 }
 module.exports = UserStorage;

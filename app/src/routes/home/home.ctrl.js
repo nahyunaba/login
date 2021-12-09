@@ -20,7 +20,7 @@ const doing = {
   login: (req, res) => {
     const user = User(req.body);
     const response = user.login();
-    console.log(response);
+    return res.json(response);
   },
 
   register: (req, res) => {
